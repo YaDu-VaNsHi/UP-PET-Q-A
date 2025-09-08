@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8"> <!-- UTF-8 encoding supports all characters -->
+
+    <!-- Mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- Ensures proper scaling on mobile devices -->
+
+    <!-- Page author -->
+    <meta name="author" content="Ashish YaDuVaNsHi."> 
+
+    <!-- Page description -->
+    <meta name="description" content="Interactive Q&A page with multiple questions for UP PET 2025."> 
+
+    <!-- Keywords for search engines -->
+    <meta name="keywords" content="Q&A, HTML, JavaScript, age questions, interactive page, multiple questions, UPPET, PET, 2025, UPPET2025, UP PET, UP PET 2025">
+
+    <title>Q&A UP PET 2025 by Ashish YaDuVaNsHi</title> <!-- Page title -->
+
+    <style>
+        /* BODY STYLING */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            max-width: 700px; /* Makes content centered on large screens */
+            margin: auto;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%); /* Gradient background */
+            color: #333;
+            line-height: 1.6; /* Readable line spacing */
+        }
+
+        /* QUESTION HEADINGS */
+        h2 {
+            display: inline-block; /* Shrinks background to text width */
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #007bff; /* Blue heading background */
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Soft shadow */
+        }
+
+        /* QUESTION TEXT */
+        .question-text {
+            font-size: 18px;
+            font-weight: 500;
+            color: #4a4a4a;
+            background: rgba(255,255,255,0.7); /* Light transparent overlay */
+            padding: 12px 15px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+
+        /* BUTTON STYLING */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+        }
+
+        button.hide-mode {
+            background-color: #dc3545; /* Red for 'Hide Answer' */
+        }
+
+        button.hide-mode:hover {
+            background-color: #c82333; /* Darker red hover */
+        }
+
+        /* ANSWER WRAPPER - for smooth toggle */
+        .answer-wrapper {
+            max-height: 0; /* Hidden initially */
+            overflow: hidden;
+            transition: max-height 0.5s ease; /* Smooth slide */
+        }
+
+        /* ANSWER CONTENT - visible text */
+        .answer-content {
+            box-sizing: border-box;
+            color: #155724; /* Dark green */
+            font-weight: bold;
+            margin-top: 12px;
+            background: #d4edda; /* Light green background */
+            padding: 12px 15px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+            border-left: 5px solid #28a745;
+        }
+
+        /* Expanded state for wrapper */
+        .show {
+            max-height: 500px; /* Adjust large enough to show full content */
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- QUESTION 1 -->
+    <h2>Question 1.</h2>
+    <p class="question-text">
+        The age of Amit is same as Sumit because they are twins, Richa is younger than Sumit, Richa is younger than Jyotsana but elder than Saurabh, Sumit is younger than Jyotsana. Who is the eldest among them?
+    </p>
+    <button class="toggle-btn">Show Answer</button>
+    <div class="answer-wrapper">
+        <div class="answer-content">
+            The eldest among them is JYOTSANA.
+        </div>
+    </div>
+
+    <!-- SAMPLE QUESTIONS - COMMENTED OUT FOR REVISION
+    <h2>Question 2.</h2>
+    <p class="question-text">Actual question 2 text here...</p>
+    <button class="toggle-btn">Show Answer</button>
+    <div class="answer-wrapper">
+        <div class="answer-content">Correct answer for question 2</div>
+    </div>
+
+    <h2>Question 3.</h2>
+    <p class="question-text">Actual question 3 text here...</p>
+    <button class="toggle-btn">Show Answer</button>
+    <div class="answer-wrapper">
+        <div class="answer-content">Correct answer for question 3</div>
+    </div>
+    -->
+
+    <!-- SINGLE JS FUNCTION FOR ALL QUESTIONS -->
+    <script>
+        // Get all toggle buttons
+        const buttons = document.querySelectorAll(".toggle-btn");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function() {
+                const wrapper = this.nextElementSibling; // Answer wrapper after button
+
+                // Toggle open/close
+                wrapper.classList.toggle("show");
+
+                // Update button text and color
+                if(wrapper.classList.contains("show")) {
+                    this.textContent = "Hide Answer";
+                    this.classList.add("hide-mode");
+                } else {
+                    this.textContent = "Show Answer";
+                    this.classList.remove("hide-mode");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
